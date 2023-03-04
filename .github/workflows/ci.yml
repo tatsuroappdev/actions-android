@@ -37,12 +37,6 @@ jobs:
       - name: Run android lint
         run: ./gradlew lintDebug
 
-      - name: Show android lint results on GitHub
-        uses: yutailang0119/action-android-lint@v3
-        with:
-          report-path: build/reports/*.xml
-        continue-on-error: false
-
       - name: Upload android lint results
         uses: actions/upload-artifact@v3
         if: success() || failure()
@@ -64,11 +58,6 @@ jobs:
       - name: Run ktlint
         run: ktlint --reporter=checkstyle,output=build/ktlint-results.xml
         continue-on-error: true
-
-#      - name: Show ktlint results on GitHub
-#        uses: yutailang0119/action-ktlint@v3
-#        with:
-#          xml_path: build/ktlint-results.xml
 
       - name: Upload ktlint results
         uses: actions/upload-artifact@v3
