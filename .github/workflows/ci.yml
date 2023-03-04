@@ -37,20 +37,40 @@ jobs:
       - name: Run android lint
         run: ./gradlew lintDebug
 
-      - name: Show android lint results on GitHub
-        uses: yutailang0119/action-android-lint@v3
-        with:
-          report-path: build/reports/*.xml
-        continue-on-error: false
+#      - name: Show android lint results on GitHub
+#        uses: yutailang0119/action-android-lint@v3
+#        with:
+#          report-path: build/reports/*.xml
+#        continue-on-error: false
 
-      - name: Upload android lint results Artifact
+      - name: Upload android lint results
         uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
-          name: results
+          name: android lint results
           path: |
             **/build/reports/lint-results-*.html
             **/build/reports/lint-results-*.xml
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Install ktlint
+        run: |
+          curl -sSLO https://github.com/pinterest/ktlint/releases/download/0.48.2/ktlint
+          chmod a+x ktlint
+          sudo mv ktlint /usr/local/bin/
+
+      - name: Run ktlint
+        run: ktlint --reporter=checkstyle,output=build/ktlint-reports.xml
+        continue-on-error: true
+
+      - name: Upload ktlint results
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: ktlint results
+          path: |
+            **/build/ktlint-reports.xml
           if-no-files-found: error
           retention-days: 14
 
