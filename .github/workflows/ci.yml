@@ -37,11 +37,22 @@ jobs:
       - name: Run android lint
         run: ./gradlew lintDebug
 
-      - name: Show results on GitHub
+      - name: Show android lint results on GitHub
         uses: yutailang0119/action-android-lint@v3
         with:
           report-path: build/reports/*.xml
         continue-on-error: false
+
+      - name: Upload android lint results Artifact
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: results
+          path: |
+            **/build/reports/lint-results-*.html
+            **/build/reports/lint-results-*.xml
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Run unit test
         run: ./gradlew testDebug
