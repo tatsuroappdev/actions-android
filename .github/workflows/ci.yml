@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
-          name: android lint results
+          name: android-lint-results
           path: |
             **/build/reports/lint-results-*.html
             **/build/reports/lint-results-*.xml
@@ -67,8 +67,7 @@ jobs:
       - name: Show ktlint results on GitHub
         uses: yutailang0119/action-ktlint@v3
         with:
-          report-path: build/*.xml
-        continue-on-error: false
+          xml_path: build/ktlint-results.xml
 
       - name: Upload ktlint results
         uses: actions/upload-artifact@v3
