@@ -61,16 +61,22 @@ jobs:
           sudo mv ktlint /usr/local/bin/
 
       - name: Run ktlint
-        run: ktlint --reporter=checkstyle,output=build/ktlint-reports.xml
+        run: ktlint --reporter=checkstyle,output=build/ktlint-results.xml
         continue-on-error: true
+
+      - name: Show ktlint results on GitHub
+        uses: yutailang0119/action-ktlint@v3
+        with:
+          report-path: build/*.xml
+        continue-on-error: false
 
       - name: Upload ktlint results
         uses: actions/upload-artifact@v3
-        if: success() || failure()
+        if: failure()
         with:
-          name: ktlint results
+          name: ktlint-results
           path: |
-            **/build/ktlint-reports.xml
+            **/build/ktlint-results.xml
           if-no-files-found: error
           retention-days: 14
 
