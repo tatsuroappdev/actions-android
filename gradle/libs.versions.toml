@@ -1,0 +1,45 @@
+[versions]
+applicationVersionCode = "1"
+applicationVersionName = "1.0.0"
+
+androidCompileSdk = "33"
+androidTargetSdk = "33"
+androidMinSdk = "26"
+
+androidGradlePlugin = "7.4.2"
+androidxAppCompat = "1.6.1"
+androidxConstraintlayout = "2.1.4"
+androidxCore = "1.9.0"
+androidxFragment = "1.5.5"
+androidxLifecycle = "2.6.0"
+androidxTestEspresso = "3.5.1"
+androidxTestExtJunit = "1.1.5"
+androidxTestRules = "1.5.0"
+androidxTestRunner = "1.5.2"
+junit4 = "4.13.2"
+kotlin = "1.8.10"
+kotlinxCoroutines = "1.6.4"
+material2 = "1.8.0"
+robolectric = "4.9.2"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidxConstraintlayout" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "androidxFragment" }
+androidx-fragment-testing = { group = "androidx.fragment", name = "fragment-testing", version.ref = "androidxFragment" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxTestEspresso" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExtJunit" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+material2 = { group = "com.google.android.material", name = "material", version.ref = "material2" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
